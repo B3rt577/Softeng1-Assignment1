@@ -96,6 +96,9 @@ class PriorityQueue:
         deletedNode = self.heap.peek()
         self.heap.deleteRoot()
         return deletedNode
+    
+    def print(self):
+        return self.heap
 
 # Driver class
 class Driver:
@@ -135,27 +138,39 @@ class Driver:
                 if len(parts) < 2:
                     print(f"Skipping malformed EMAIL line (no arguments): {cleanedLine}")
                     continue                    
+                # create an immediate arr to assign priority values
+                # I will use integers from 1-5 , 5 being the highest priority and 1 being the least.
+                immediate_arr = []
                 # when split is used in a list, it will not make another list inside the list
                 details = parts[1].split(',')
 
                 sgDetails = tuple(details)
                 match sgDetails[0]:
                      case "Boss":
+                        priority_val = 5
+                        immediate_arr.append(priority_val)
+                        immediate_arr.append(sgDetails)
+                        self.queue.enqueue(immediate_arr)
+                        
+            
+            # dequeue operation should be handled here
+            elif command == "NEXT":
 
-                        pass
+                pass
+            
+            # display the current count of unread emails
+            elif command == "COUNT":
+                pass
+            
+            #
+            elif command == "READ":
+                pass
 
+    
             else:
                 continue
-            print(sgDetails)
-            
-            # array = list(content)
-            # # modify to accept empty strings
-            # if array:
-            #     match array[0]:
-            #         case "EMAIL":
-            #             details = list(array[1]) 
-            #             print(details)
-            #             break
+            print()
+
         
     
 
