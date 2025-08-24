@@ -90,13 +90,52 @@ class PriorityQueue:
         return deletedNode
     
 class Driver:
-    def readFile(fileName):
-        with open(fileName, "r", encoding="utf-8") as f: 
-            lines = f.readline()
-        return 
+    def __init__(self):
+        self.queue = PriorityQueue()
+
+    def readFile(self, fileName):
+        try:
+            with open(fileName, "r", encoding="utf-8") as f: 
+                lines = f.readlines()
+            return lines
+        except FileNotFoundError:
+            print(f"Error: The file '{fileName}' was not found.")
+            return None # Return None to indicate failure
+         
     
-    def processFile(readfile):
-        return 
+    def loadAndParse(self, fileContents):
+
+        if fileContents is None:
+            print("Cannot process file because it could not be read.")
+            return
+        
+        for content in fileContents:
+            cleanedLine = content.strip()
+            if not cleanedLine:  # Skip empty lines
+                continue
+
+            parts = cleanedLine.split(' ',1) 
+            command = parts[0]
+
+            if command == "EMAIL":
+                if len(parts) < 2:
+                    print(f"Skipping malformed EMAIL line (no arguments): {cleanedLine}")
+                    continue
+                
+                # when split is used in a list, it will not make another list inside the list
+                details = parts[1].split(',')
+            else:
+                continue
+            print(details)
+            # array = list(content)
+            # # modify to accept empty strings
+            # if array:
+            #     match array[0]:
+            #         case "EMAIL":
+            #             details = list(array[1]) 
+            #             print(details)
+            #             break
+        
     
 
 if __name__ == '__main__':
@@ -109,7 +148,12 @@ if __name__ == '__main__':
         if x:
             if isinstance(x[0], str) and x[0] == ".txt":
                 # all creation of driver object and calls are made here
+                driver = Driver()
 
+                contents = driver.readFile(test)
+
+                if contents:
+                    driver.loadandParse(contents)
 
                 defaultboolval = False
         else:
