@@ -12,6 +12,9 @@ Creation Date: 8/22/2025
 Sources for the MaxHeap: https://www.geeksforgeeks.org/dsa/introduction-to-max-heap-data-structure/
 
 '''
+import os
+import re
+
 class MaxHeap:
     def __init__(self):
         self.arr = []       # initialize an empty list when MaxHeap object is created
@@ -75,18 +78,45 @@ class PriorityQueue:
     def __init__(self):
         self.heap = MaxHeap()
 
+    # a method to insert a key to the Binary MaxHeap
     def enqueue(self, key):
         # insert a new element to the Queue
         self.heap.insertNode(key)
     
     def dequeue(self):
         # return the highest priority element which is the root of a Binary Max Heap and heapify down the Binary Max Heap
-        self.heap.peek()
-        self.heap.heapify_down(0)
+        deletedNode = self.heap.peek()
+        self.heap.deleteRoot()
+        return deletedNode
     
-# if __name__ == '__main__':
-#     arr = [ 3,10, 11, 40, 5, 8]
-#     heap = MaxHeap()
-#     for i in arr:
-#         heap.insertNode(i)
-#     print(heap.arr)
+class Driver:
+    def readFile(fileName):
+        with open(fileName, "r", encoding="utf-8") as f: 
+            lines = f.readline()
+        return 
+    
+    def processFile(readfile):
+        return 
+    
+
+if __name__ == '__main__':
+    defaultboolval = True
+
+    while defaultboolval != False:
+        
+        test = input("Insert Test file Name: ")
+        x = re.findall(".txt", test)
+        if x:
+            if isinstance(x[0], str) and x[0] == ".txt":
+                # all creation of driver object and calls are made here
+
+
+                defaultboolval = False
+        else:
+            defaultboolval = True
+    
+
+    
+
+    
+        
